@@ -1,0 +1,6 @@
+%h1= @gif.name
+%img{src: @gif.url}
+%p= ""
+%p=  @gif.description
+%p= "Saved By: #{@gif.owner}"
+=link_to("Delete", gif_path(@gif), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger')

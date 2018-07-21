@@ -1,0 +1,20 @@
+.container-fluid{style: 'text-align: center'}
+  %h1 All the gifs!
+  %button.btn.btn-lg
+    %a{href: '/gifs/new'} New
+  %button.btn.btn-lg 
+    %a{href: 'https://google.com'} Roulette
+  %br
+  .row
+    - @gifs.each do |gif|
+      .col-md-4
+        %h4= gif.name
+        %a= gif.owner
+        %img{src: gif.url, class: 'gif-img'}
+        %p=  gif.description
+        =link_to('View Gif', gif_path(gif))
+        %hr{width: "100%"}
+      %br
+
+
+    

@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Gifhub
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script="https://code.jquery.com/jquery-3.3.1.min.js"
+  %body
+    %nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      .col-md-offset-4
+      #navbarCollapse.collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item
+            %a.nav-link{href: "/about"} About
+          %li.nav-item
+            %a.nav-link{href: "/users"} Users
+          %li.nav-item
+            %a.nav-link{href: "/gifs"} My Gifs
+          %li.nav-item
+            %a.nav-link{href: "https://glacial-inlet-28358.herokuapp.com"} Browse
+        %ul.navbar-nav.ml-auto
+          %li.nav-item-right.ml-auto
+            %a.nav-link{href: "/users/sign_in"} Log In
+          - if user_signed_in?
+            %li.nav-item-right.ml-auto
+              %a.nav-link{href: destroy_user_session_path, method: :delete} Log Out
+          - else
+            %li.nav-item-right.ml-auto
+              %a.nav-link{href: "/users/sign_up"} Sign Up
+        -# %form.form-inline.mt-2.mt-md-0
+        -#   %input.form-control.mr-sm-2{"aria-label" => "Search", placeholder: "Search", type: "text"}/
+        -#   %button.btn.btn-outline-success.my-2.my-sm-0{type: "submit"} Search
+    .container
+      %p.notice= notice
+      %p.alert= alert
+      = yield

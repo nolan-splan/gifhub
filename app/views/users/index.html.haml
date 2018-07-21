@@ -1,0 +1,10 @@
+- @users.each do |user|
+  .col-md-4
+    %h4= user.email
+    %p=  user.created_at
+    =link_to('View Profile', user_path(user))
+  %br
+
+.col-md-4
+  %h2 User Count: 
+  %h3= User.count

@@ -1,0 +1,12 @@
+%h1 @user.email
+.row
+  - @gifs.each do |gif|
+    .col-md-4
+      - if gif.owner == @user.email
+        %h4= gif.name
+        %a= gif.owner
+        %img{src: gif.url, class: 'gif-img'}
+        %p=  gif.description
+        =link_to("View Gif", gifs_path(@gif), class: 'btn btn-primary')
+        %hr{width: "100%"}
+      %br
